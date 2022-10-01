@@ -1,50 +1,20 @@
 import 'package:flutter/material.dart';
-import 'screens/game_environment.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:project/splash.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SafeArea(
-        child: GameEnvironment(),
-      )
-    );
+      home: SplashScreen()
+      );
   }
 }
-
-
-// Stack(
-// alignment: AlignmentDirectional.center,
-// children: <Widget>[
-// Positioned(
-// top: 5,
-// left: 5,
-// child: Container(
-// // height: 120,
-// // width: 120,
-// decoration: const BoxDecoration(
-// image: DecorationImage(
-// image: AssetImage('assets/polarBear.png')
-// ),
-// ),
-// ),
-// )
-// ],
-// )
-
-// Expanded(
-// child: Container(
-// decoration: BoxDecoration(
-// image: DecorationImage(
-// image: AssetImage('assets/polarBear.png')
-// )
-// ),
-// ),
-// ),
