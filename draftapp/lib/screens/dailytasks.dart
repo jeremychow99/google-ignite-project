@@ -63,10 +63,10 @@ class CurDateTime extends StatelessWidget {
         children: [
           Text(
             greetingMessage(),
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           ),
           Text(getCurrentDate(),
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 18, color: Color.fromARGB(255, 0, 115, 130)))
         ],
       ),

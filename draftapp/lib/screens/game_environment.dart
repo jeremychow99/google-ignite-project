@@ -324,7 +324,6 @@ class _Body extends StatelessWidget {
                       lineHeight: 13,
                       percent: 0.01,
                       center: const Text('1%',style: TextStyle(fontSize: 8),),
-
                       linearStrokeCap: LinearStrokeCap.roundAll,
                       progressColor: Colors.green[600],
                       backgroundColor: Colors.grey[300],
