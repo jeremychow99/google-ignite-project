@@ -104,6 +104,7 @@ Widget buildMenuItems(BuildContext context) => Container(
         title: Text("Daily Tasks"),
         onTap: null,
       ),
+      Divider(color: Colors.black54,),
       ListTile(
         leading: Icon(Icons.military_tech_sharp),
         title: Text("Achievements"),
