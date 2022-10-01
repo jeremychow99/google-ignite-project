@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ToDoList extends StatelessWidget {
-  const ToDoList({super.key});
+//TODO FOR JEREMY'S PORTION, SEPARATE INTO SEPARATE DART FILE CAN CALL CLASS FROM THERE
+//TODO SAME FOR NAV BAR ROUTING
+class Page2 extends StatelessWidget {
+  const Page2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +12,7 @@ class ToDoList extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
-          children: <Widget>[CurDateTime(), const Expanded(child: toDoWidget())],
+          children: <Widget>[CurDateTime(), Expanded(child: toDoWidget())],
         ),
       ),
     );
@@ -36,7 +38,7 @@ class _MyWidgetState extends State<toDoWidget> {
         itemBuilder: (BuildContext context, int index) {
           return Card(
               child: ListTile(
-                  shape: const RoundedRectangleBorder(
+                  shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           topRight: Radius.circular(25),
@@ -45,7 +47,7 @@ class _MyWidgetState extends State<toDoWidget> {
                   subtitle: const Text(
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
                   tileColor:
-                  _selected[index] ? Colors.green[900] : Colors.orange[700],
+                      _selected[index] ? Colors.green[900] : Colors.orange[700],
                   onTap: () =>
                       setState(() => _selected[index] = !_selected[index]),
                   title: Text("List item $index")));
@@ -63,10 +65,10 @@ class CurDateTime extends StatelessWidget {
         children: [
           Text(
             greetingMessage(),
-            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           ),
           Text(getCurrentDate(),
-              style: const TextStyle(
+              style: TextStyle(
                   fontSize: 18, color: Color.fromARGB(255, 0, 115, 130)))
         ],
       ),
