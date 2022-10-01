@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'dailytasks.dart';
 
 const Map<String, Color> myColors = {
   "primary": Color.fromRGBO(0, 158, 199, 1)
@@ -89,38 +90,40 @@ Widget buildHeaders(BuildContext context) => Container(
     ],
   ),
 );
+
 Widget buildMenuItems(BuildContext context) => Container(
   padding: const EdgeInsets.all(24.0),
   child: Wrap(
     runSpacing: 16,
-    children: const [
-      ListTile(
+    children: [
+      const ListTile(
         leading: Icon(Icons.sports_esports),
         title: Text("Game on!"),
         onTap: null,
       ),
       ListTile(
-        leading: Icon(Icons.checklist_rounded),
-        title: Text("Daily Tasks"),
-        onTap: null,
+        leading: const Icon(Icons.checklist_rounded),
+        title: const Text("Daily Tasks"),
+        // TODO ROUTE TO JEREMY'S TODO LIST
+        onTap: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Page2()));},
       ),
-      Divider(color: Colors.black54,),
-      ListTile(
+      const Divider(color: Colors.black54,),
+      const ListTile(
         leading: Icon(Icons.military_tech_sharp),
         title: Text("Achievements"),
         onTap: null,
       ),
-      ListTile(
+      const ListTile(
         leading: Icon(Icons.storefront_outlined),
         title: Text("Store"),
         onTap: null,
       ),
-      ListTile(
+      const ListTile(
         leading: Icon(Icons.newspaper_outlined),
         title: Text("News"),
         onTap: null,
       ),
-      ListTile(
+      const ListTile(
         leading: Icon(Icons.settings),
         title: Text("Settings"),
         onTap: null,
@@ -144,11 +147,18 @@ class _Body extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Column(
-                    children: const [
-                      Image(
-                        image: AssetImage('assets/Background4.png'),
-                      ),
+                  Stack(
+                    children: [
+                      const Image(image: AssetImage('assets/Background2.png'),),
+                      Positioned(
+                        left: 180,
+                        child: Container(
+                          alignment: Alignment.centerRight,
+                          height: 390,
+                          width: 100,
+                          child: const Image(image: AssetImage('assets/polarBear.png'),),
+                        ),
+                      )
                     ],
                   ),
                 ],
@@ -171,10 +181,11 @@ class _Body extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(35, 18, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(35, 0, 0, 0),
                     child: Row(
                       // crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
+                      // crossAxisAlignment : CrossAxisAlignment.center,
                       children: <Widget>[
                           const Icon(
                             Icons.ac_unit,
@@ -216,7 +227,7 @@ class _Body extends StatelessWidget {
                     )
                   ),
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(40, 15, 0, 0),
+                    padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
                     child: Text(
                       'Health',
                       style: TextStyle(
@@ -226,7 +237,7 @@ class _Body extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(35, 0, 35, 0),
+                    padding: const EdgeInsets.fromLTRB(35, 0, 0, 0),
                     child: LinearPercentIndicator(
                       width: 300,
                       lineHeight: 13,
@@ -264,7 +275,7 @@ class _Body extends StatelessWidget {
                     ),
                   ),
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(35, 30, 0, 0),
+                    padding: EdgeInsets.fromLTRB(35, 0, 0, 0),
                     child: Text(
                       'The Environment',
                       style: TextStyle(
@@ -346,6 +357,15 @@ class _Body extends StatelessWidget {
                       animationDuration: 1500,
                     ),
                   ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: IconButton(
+                      onPressed: () {Navigator.of(context).push(_todoListRoute());},
+                      iconSize: 52,
+                      color: Colors.black,
+                      icon: const Icon(Icons.expand_less_sharp),
+                    ),
+                  )
                 ],
               ),
             ),
@@ -355,4 +375,18 @@ class _Body extends StatelessWidget {
   }
 }
 
-
+Route _todoListRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const Page2(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
