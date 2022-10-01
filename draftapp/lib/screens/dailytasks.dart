@@ -10,7 +10,7 @@ class ToDoList extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
-          children: <Widget>[CurDateTime(), Expanded(child: toDoWidget())],
+          children: <Widget>[CurDateTime(), const Expanded(child: toDoWidget())],
         ),
       ),
     );
@@ -36,7 +36,7 @@ class _MyWidgetState extends State<toDoWidget> {
         itemBuilder: (BuildContext context, int index) {
           return Card(
               child: ListTile(
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(25),
                           topRight: Radius.circular(25),

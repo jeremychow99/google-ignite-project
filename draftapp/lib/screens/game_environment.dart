@@ -62,7 +62,6 @@ class NavigationDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO Build on navigation tile to link to other pages
     return Drawer(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
