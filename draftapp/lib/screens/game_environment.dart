@@ -105,7 +105,7 @@ Widget buildMenuItems(BuildContext context) => Container(
         leading: const Icon(Icons.checklist_rounded),
         title: const Text("Daily Tasks"),
         // TODO ROUTE TO JEREMY'S TODO LIST
-        onTap: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Page2()));},
+        onTap: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DailyTasks()));},
       ),
       const Divider(color: Colors.black54,),
       const ListTile(
@@ -377,7 +377,7 @@ class _Body extends StatelessWidget {
 
 Route _todoListRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => const Page2(),
+    pageBuilder: (context, animation, secondaryAnimation) => const DailyTasks(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(0.0, 1.0);
       const end = Offset.zero;
