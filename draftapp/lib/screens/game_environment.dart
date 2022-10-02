@@ -160,7 +160,47 @@ class _BodyState extends State<_Body> {
     {"image": 'assets/Background2.png'},
     {"image": 'assets/Background3.png'},
     {"image": 'assets/Background4.png'},
+    {"image": 'assets/Background5.png'},
+    {"image": 'assets/Background6.png'},
+    {"image": 'assets/Background7.png'},
+    {"image": 'assets/Background8.png'},
+    {"image": 'assets/Background9.png'},
+    {"image": 'assets/Background10.png'},
+    {"image": 'assets/Background11.png'},
+    {"image": 'assets/Background12.png'},
+    {"image": 'assets/Background13.png'},
+    {"image": 'assets/Background14.png'},
+    {"image": 'assets/Background15.png'},
+    {"image": 'assets/Background16.png'},
+    {"image": 'assets/Background17.png'},
+    {"image": 'assets/Background18.png'},
+    {"image": 'assets/Background19.png'},
     {"image": 'assets/Background20.png'},
+    {"image": 'assets/Background20.png'},
+  ];
+
+  var bear = [
+    {"emotion": 'assets/polarbear_worst.png'},
+    {"emotion": 'assets/polarbear_worst.png'},
+    {"emotion": 'assets/polarbear_worst.png'},
+    {"emotion": 'assets/polarbear_worst.png'},
+    {"emotion": 'assets/polarbear_worst.png'},
+    {"emotion": 'assets/polarbear_worst.png'},
+    {"emotion": 'assets/polarbear_depressed.png'},
+    {"emotion": 'assets/polarbear_depressed.png'},
+    {"emotion": 'assets/polarbear_depressed.png'},
+    {"emotion": 'assets/polarbear_depressed.png'},
+    {"emotion": 'assets/polarbear_depressed.png'},
+    {"emotion": 'assets/polarbear_sad.png'},
+    {"emotion": 'assets/polarbear_sad.png'},
+    {"emotion": 'assets/polarbear_sad.png'},
+    {"emotion": 'assets/polarbear_sad.png'},
+    {"emotion": 'assets/polarbear_sad.png'},
+    {"emotion": 'assets/polarbear_happy.png'},
+    {"emotion": 'assets/polarbear_happy.png'},
+    {"emotion": 'assets/polarbear_happy.png'},
+    {"emotion": 'assets/polarbear_happy.png'},
+    {"emotion": 'assets/polarbear_happy.png'},
   ];
   @override
   Widget build(BuildContext context) {
@@ -185,7 +225,7 @@ class _BodyState extends State<_Body> {
                           width: 100,
                           child: const Image(image: AssetImage('assets/polarBear.png'),),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ],
@@ -208,11 +248,22 @@ class _BodyState extends State<_Body> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                      padding: const EdgeInsets.fromLTRB(35, 18, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(35, 5, 0, 2),
                       child: Row(
                         // crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
+                          CircleAvatar(
+                            radius: 32,
+                            backgroundImage: AssetImage(bear[backgroundIndex]["emotion"].toString()),
+                          ),
+                          const SizedBox(width: 7,),
+                          const Text(
+                            'A CutePolarBear',
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20,
+                            ),
+                          ),
+                          const SizedBox(width: 5,),
                           GestureDetector(
                             onTap: () {
                               setState(() {
@@ -222,6 +273,7 @@ class _BodyState extends State<_Body> {
                                 cleanliness = cleanliness+4;
                                 survivability = survivability+4;
                                 backgroundIndex ++;
+                                print(backgroundIndex);
                               });
                             },
                             child: const Icon(
@@ -229,13 +281,7 @@ class _BodyState extends State<_Body> {
                               color: Colors.lightBlueAccent,
                             ),
                           ),
-                          const SizedBox(width: 7,),
-                          const Text(
-                            'A CutePolarBear',
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20,
-                            ),
-                          ),
-                          const SizedBox(width: 85,),
+                          const SizedBox(width: 20,),
                           IconButton(
                             onPressed: () {
                               showDialog(
@@ -338,7 +384,7 @@ class _BodyState extends State<_Body> {
                   ),
 
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(15, 30, 0, 0),
+                    padding: EdgeInsets.fromLTRB(15, 20, 0, 0),
                     child: Text(
                       'The Environment',
                       style: TextStyle(
@@ -454,13 +500,22 @@ class _BodyState extends State<_Body> {
                         ],
                       )
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: IconButton(
-                    onPressed: () {Navigator.of(context).push(_todoListRoute());},
-                    iconSize: 52,
-                    color: Colors.black,
-                    icon: const Icon(Icons.expand_less_sharp),
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: SizedBox(
+                        width: double.infinity,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            IconButton(
+                              onPressed: () {Navigator.of(context).push(_todoListRoute());},
+                              iconSize: 52,
+                              color: Colors.black,
+                              icon: const Icon(Icons.expand_less_sharp),
+                            ),
+                            const Text("Daily tasks")
+                          ],
+                        )
                     ),
                   )
                 ],
