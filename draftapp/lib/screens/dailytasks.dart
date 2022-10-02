@@ -9,6 +9,7 @@ class ToDoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         title: 'test',
         home: Scaffold(
           drawer: const NavigationDrawer(),
