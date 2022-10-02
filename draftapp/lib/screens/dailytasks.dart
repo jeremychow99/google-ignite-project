@@ -151,8 +151,8 @@ showAlertDialog(BuildContext context) {
 
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
-    title: Text("Congratulations!"),
-    content: Text("You have completed the minimum number of required tasks. Keep it up!"),
+    title: const Text("Congratulations!"),
+    content: const Text("You have completed the minimum number of required tasks. Keep it up!"),
     actions: [
       okButton,
     ],

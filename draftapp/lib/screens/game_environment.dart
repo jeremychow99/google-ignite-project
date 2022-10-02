@@ -576,3 +576,4 @@ Color calculateBackgroundColor({required double value}) {
     return Colors.redAccent;
   }
 }
+
