@@ -153,6 +153,15 @@ class _BodyState extends State<_Body> {
   int water = 5;
   int cleanliness = 10;
   int survivability = 10;
+  int backgroundIndex = 0;
+
+  var backgrounds = [
+    {"image": 'assets/Background1.png'},
+    {"image": 'assets/Background2.png'},
+    {"image": 'assets/Background3.png'},
+    {"image": 'assets/Background4.png'},
+    {"image": 'assets/Background20.png'},
+  ];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -167,7 +176,7 @@ class _BodyState extends State<_Body> {
                 children: [
                   Stack(
                     children: [
-                      const Image(image: AssetImage('assets/Background20.png'),),
+                      Image(image: AssetImage(backgrounds[backgroundIndex]['image'].toString()),),
                       Positioned(
                         left: 180,
                         child: Container(
@@ -212,6 +221,7 @@ class _BodyState extends State<_Body> {
                                 water = water+4;
                                 cleanliness = cleanliness+4;
                                 survivability = survivability+4;
+                                backgroundIndex ++;
                               });
                             },
                             child: const Icon(
