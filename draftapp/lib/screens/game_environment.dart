@@ -6,9 +6,16 @@ const Map<String, Color> myColors = {
   "primary": Color.fromRGBO(0, 158, 199, 1)
 };
 
-// Main environment build upon myAppBar() and _Body()
-class GameEnvironment extends StatelessWidget {
-   const GameEnvironment({Key? key}) : super(key: key);
+class GameEnvironment extends StatefulWidget {
+  const GameEnvironment({super.key});
+
+  @override
+  State<StatefulWidget> createState() {
+    return GameEnvironmentState();
+  }
+}
+
+class GameEnvironmentState extends State<GameEnvironment> {
 
   @override
   Widget build(BuildContext context) {
@@ -131,9 +138,21 @@ Widget buildMenuItems(BuildContext context) => Container(
   ),
 );
 
-class _Body extends StatelessWidget {
-  const _Body({Key? key}) : super(key: key);
+class _Body extends StatefulWidget {
+  const _Body();
 
+  @override
+  State<StatefulWidget> createState() {
+    return _BodyState();
+  }
+}
+
+class _BodyState extends State<_Body> {
+  int health = 16;
+  int condition = 25;
+  int water = 5;
+  int cleanliness = 10;
+  int survivability = 10;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -148,7 +167,7 @@ class _Body extends StatelessWidget {
                 children: [
                   Stack(
                     children: [
-                      const Image(image: AssetImage('assets/Background2.png'),),
+                      const Image(image: AssetImage('assets/Background20.png'),),
                       Positioned(
                         left: 180,
                         child: Container(
@@ -185,9 +204,20 @@ class _Body extends StatelessWidget {
                         // crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          const Icon(
-                            Icons.ac_unit,
-                            color: Colors.lightBlueAccent,
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                health = health+4;
+                                condition = condition+3;
+                                water = water+4;
+                                cleanliness = cleanliness+4;
+                                survivability = survivability+4;
+                              });
+                            },
+                            child: const Icon(
+                              Icons.ac_unit,
+                              color: Colors.lightBlueAccent,
+                            ),
                           ),
                           const SizedBox(width: 7,),
                           const Text(
@@ -250,13 +280,12 @@ class _Body extends StatelessWidget {
                           LinearPercentIndicator(
                             width: 270,
                             lineHeight: 13,
-                            percent: 0.90,
-                            center: const Text('90.0%', style: TextStyle(fontSize: 8),),
+                            percent: health*0.01,
+                            center: Text('$health%', style: const TextStyle(fontSize: 8),),
                             linearStrokeCap: LinearStrokeCap.roundAll,
-                            progressColor: calculateBackgroundColor(value: 0.9),
+                            progressColor: calculateBackgroundColor(value: health*0.01),
                             backgroundColor: Colors.grey[300],
-                            animation: true,
-                            animationDuration: 1500,
+                            animation: false,
                           ),
                         ],
                       )
@@ -284,17 +313,15 @@ class _Body extends StatelessWidget {
                               ),
                             ),
                           ),
-
                           LinearPercentIndicator(
                             width: 270,
                             lineHeight: 13,
-                            percent: 0.80,
-                            center: const Text('80.0%', style: TextStyle(fontSize: 8),),
+                            percent: condition*0.01,
+                            center: Text('$condition%', style: const TextStyle(fontSize: 8),),
                             linearStrokeCap: LinearStrokeCap.roundAll,
-                            progressColor: calculateBackgroundColor(value: 0.8),
+                            progressColor: calculateBackgroundColor(value: condition*0.01),
                             backgroundColor: Colors.grey[300],
-                            animation: true,
-                            animationDuration: 1500,
+                            animation: false,
                           ),
                         ],
                       )
@@ -336,13 +363,12 @@ class _Body extends StatelessWidget {
                           LinearPercentIndicator(
                             width: 270,
                             lineHeight: 13,
-                            percent: 0.75,
-                            center: const Text('75.0%', style: TextStyle(fontSize: 8),),
+                            percent: water*0.01,
+                            center: Text('$water%', style: const TextStyle(fontSize: 8),),
                             linearStrokeCap: LinearStrokeCap.roundAll,
-                            progressColor: calculateBackgroundColor(value: 0.75),
+                            progressColor: calculateBackgroundColor(value: water*0.01),
                             backgroundColor: Colors.grey[300],
-                            animation: true,
-                            animationDuration: 1500,
+                            animation: false,
                           ),
                         ],
                       )
@@ -372,13 +398,12 @@ class _Body extends StatelessWidget {
                           LinearPercentIndicator(
                             width: 270,
                             lineHeight: 13,
-                            percent: 0.80,
-                            center: const Text('80.0%', style: TextStyle(fontSize: 8),),
+                            percent: cleanliness*0.01,
+                            center: Text('$cleanliness%', style: const TextStyle(fontSize: 8),),
                             linearStrokeCap: LinearStrokeCap.roundAll,
-                            progressColor: calculateBackgroundColor(value: 0.8),
+                            progressColor: calculateBackgroundColor(value: cleanliness*0.01),
                             backgroundColor: Colors.grey[300],
-                            animation: true,
-                            animationDuration: 1500,
+                            animation: false,
                           ),
                         ],
                       )
@@ -409,13 +434,12 @@ class _Body extends StatelessWidget {
                           LinearPercentIndicator(
                             width: 270,
                             lineHeight: 13,
-                            percent: 0.80,
-                            center: const Text('80.0%', style: TextStyle(fontSize: 8),),
+                            percent: survivability*0.01,
+                            center: Text('$survivability%', style: const TextStyle(fontSize: 8),),
                             linearStrokeCap: LinearStrokeCap.roundAll,
-                            progressColor: calculateBackgroundColor(value: 0.8),
+                            progressColor: calculateBackgroundColor(value: survivability*0.01),
                             backgroundColor: Colors.grey[300],
-                            animation: true,
-                            animationDuration: 1500,
+                            animation: false,
                           ),
                         ],
                       )
