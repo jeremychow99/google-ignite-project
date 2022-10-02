@@ -273,7 +273,6 @@ class _BodyState extends State<_Body> {
                                 cleanliness = cleanliness+4;
                                 survivability = survivability+4;
                                 backgroundIndex ++;
-                                print(backgroundIndex);
                               });
                             },
                             child: const Icon(
@@ -311,7 +310,7 @@ class _BodyState extends State<_Body> {
                       )
                   ),
                   Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
@@ -347,7 +346,7 @@ class _BodyState extends State<_Body> {
                       )
                   ),
                   Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(10, 12, 0, 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
