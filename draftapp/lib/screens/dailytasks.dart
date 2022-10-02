@@ -9,6 +9,7 @@ class ToDoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'test',
         home: Scaffold(
           drawer: const NavigationDrawer(),
@@ -141,8 +142,10 @@ showAlertDialog(BuildContext context) {
   Widget okButton = TextButton(
     child: Text("OK"),
     onPressed: () {
+      Navigator.pop(context);
       Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => const GameEnvironment()));
+
     },
   );
 
