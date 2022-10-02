@@ -6,6 +6,7 @@ const Map<String, Color> myColors = {
   "primary": Color.fromRGBO(0, 158, 199, 1)
 };
 
+// Main environment build upon myAppBar() and _Body()
 class GameEnvironment extends StatelessWidget {
    const GameEnvironment({Key? key}) : super(key: key);
 
@@ -103,7 +104,6 @@ Widget buildMenuItems(BuildContext context) => Container(
       ListTile(
         leading: const Icon(Icons.checklist_rounded),
         title: const Text("Daily Tasks"),
-        // TODO ROUTE TO JEREMY'S TODO LIST
         onTap: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ToDoList()));},
       ),
       const Divider(color: Colors.black54,),
@@ -180,101 +180,128 @@ class _Body extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(35, 0, 0, 0),
-                    child: Row(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      // crossAxisAlignment : CrossAxisAlignment.center,
-                      children: <Widget>[
+                      padding: const EdgeInsets.fromLTRB(35, 18, 0, 0),
+                      child: Row(
+                        // crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
                           const Icon(
                             Icons.ac_unit,
                             color: Colors.lightBlueAccent,
                           ),
                           const SizedBox(width: 7,),
                           const Text(
-                          'A CutePolarBear',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                            'A CutePolarBear',
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20,
+                            ),
                           ),
-                          textAlign: TextAlign.left,
-                        ),
-                        const SizedBox(width: 85,),
-                        IconButton(
-                          onPressed: () {showDialog(
-                                  context: context,
-                                  builder: (context) => AlertDialog(
-                                  title: const Text("#TODO"),
-                                  content: const  Text("#TODO content"),
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(10))
+                          const SizedBox(width: 85,),
+                          IconButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) =>
+                                    AlertDialog(
+                                      title: const Text("#TODO"),
+                                      content: const Text("#TODO content"),
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10))
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () => Navigator.pop(context),
+                                            child: const Text("Great!"))
+                                      ],
                                     ),
-                                    actions: [
-                                      TextButton(
-                                          onPressed: () => Navigator.pop(context),
-                                          child: const Text("Great!"))
-                                    ],
-                                  ),
-                                );
-                              },
-                          icon: const Icon(
-                            Icons.security_update_good_outlined,
-                            color: Colors.black,
+                              );
+                            },
+                            icon: const Icon(
+                              Icons.security_update_good_outlined,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                      ],
-                    )
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
-                    child: Text(
-                      'Health',
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                        ],
+                      )
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(35, 0, 0, 0),
-                    child: LinearPercentIndicator(
-                      width: 300,
-                      lineHeight: 13,
-                      percent: 0.95,
-                      center: const Text('95.0%',style: TextStyle(fontSize: 8),),
-                      linearStrokeCap: LinearStrokeCap.roundAll,
-                      progressColor: Colors.red,
-                      backgroundColor: Colors.grey[300],
-                      animation: true,
-                      animationDuration: 1500,
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(40, 6, 0, 0),
-                    child: Text(
-                      'Condition',
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                      padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            width: 80,
+                            height: 13.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(24.0),
+                              color: Colors.white,
+                            ),
+                            child: const SizedBox(
+                              child: Text(
+                                'Health',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.black,
+                                  height: 1,
+                                ),
+                              ),
+                            ),
+                          ),
+                          LinearPercentIndicator(
+                            width: 270,
+                            lineHeight: 13,
+                            percent: 0.90,
+                            center: const Text('90.0%', style: TextStyle(fontSize: 8),),
+                            linearStrokeCap: LinearStrokeCap.roundAll,
+                            progressColor: calculateBackgroundColor(value: 0.9),
+                            backgroundColor: Colors.grey[300],
+                            animation: true,
+                            animationDuration: 1500,
+                          ),
+                        ],
+                      )
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(35, 0, 35, 0),
-                    child: LinearPercentIndicator(
-                      width: 300,
-                      lineHeight: 13,
-                      percent: 0.85,
-                      center: const Text('85.0%',style: TextStyle(fontSize: 8),),
-                      linearStrokeCap: LinearStrokeCap.roundAll,
-                      progressColor: Colors.lightBlueAccent,
-                      backgroundColor: Colors.grey[300],
-                      animation: true,
-                      animationDuration: 1500,
-                    ),
+                      padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            width: 80.0,
+                            height: 13.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(24.0),
+                              color: Colors.white,
+                            ),
+                            child: const SizedBox(
+                              child: Text(
+                                'Condition',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.black,
+                                  height: 1,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          LinearPercentIndicator(
+                            width: 270,
+                            lineHeight: 13,
+                            percent: 0.80,
+                            center: const Text('80.0%', style: TextStyle(fontSize: 8),),
+                            linearStrokeCap: LinearStrokeCap.roundAll,
+                            progressColor: calculateBackgroundColor(value: 0.8),
+                            backgroundColor: Colors.grey[300],
+                            animation: true,
+                            animationDuration: 1500,
+                          ),
+                        ],
+                      )
                   ),
+
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(35, 0, 0, 0),
+                    padding: EdgeInsets.fromLTRB(15, 30, 0, 0),
                     child: Text(
                       'The Environment',
                       style: TextStyle(
@@ -283,85 +310,123 @@ class _Body extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(40, 15, 0, 0),
-                    child: Text(
-                      'Toxicity',
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            width: 80.0,
+                            height: 13.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(24.0),
+                              color: Colors.white,
+                            ),
+                            child: const SizedBox(
+                              child: Text(
+                                'Water Purity',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.black,
+                                  height: 1,
+                                ),
+                              ),
+                            ),
+                          ),
+                          LinearPercentIndicator(
+                            width: 270,
+                            lineHeight: 13,
+                            percent: 0.75,
+                            center: const Text('75.0%', style: TextStyle(fontSize: 8),),
+                            linearStrokeCap: LinearStrokeCap.roundAll,
+                            progressColor: calculateBackgroundColor(value: 0.75),
+                            backgroundColor: Colors.grey[300],
+                            animation: true,
+                            animationDuration: 1500,
+                          ),
+                        ],
+                      )
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(35, 0, 35, 0),
-                    child: LinearPercentIndicator(
-                      width: 300,
-                      lineHeight: 13,
-                      percent: 0.05,
-                      center: const Text('5.0%',style: TextStyle(fontSize: 8),),
-                      linearStrokeCap: LinearStrokeCap.roundAll,
-                      progressColor: Colors.deepPurpleAccent,
-                      backgroundColor: Colors.grey[300],
-                      animation: true,
-                      animationDuration: 1500,
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(40, 6, 0, 0),
-                    child: Text(
-                      'Trash Index',
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(35, 5, 35, 0),
-                    child: LinearPercentIndicator(
-                      width: 300,
-                      lineHeight: 13,
-                      percent: 0.01,
-                      center: const Text('1%',style: TextStyle(fontSize: 8),),
-                      linearStrokeCap: LinearStrokeCap.roundAll,
-                      progressColor: Colors.green[600],
-                      backgroundColor: Colors.grey[300],
-                      animation: true,
-                      animationDuration: 1500,
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(40, 5, 0, 0),
-                    child: Text(
-                      'Survivability',
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                      padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[Container(
+                          width: 80.0,
+                          height: 13,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24.0),
+                            color: Colors.white,
+                          ),
+                          child: const SizedBox(
+                            child: Text(
+                              'Cleanliness',
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: Colors.black,
+                                height: 1,
+                              ),
+                            ),
+                          ),
+                        ),
+                          LinearPercentIndicator(
+                            width: 270,
+                            lineHeight: 13,
+                            percent: 0.80,
+                            center: const Text('80.0%', style: TextStyle(fontSize: 8),),
+                            linearStrokeCap: LinearStrokeCap.roundAll,
+                            progressColor: calculateBackgroundColor(value: 0.8),
+                            backgroundColor: Colors.grey[300],
+                            animation: true,
+                            animationDuration: 1500,
+                          ),
+                        ],
+                      )
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(35, 0, 35, 0),
-                    child: LinearPercentIndicator(
-                      width: 300,
-                      lineHeight: 13,
-                      percent: 0.99,
-                      center: const Text('99.0%',style: TextStyle(fontSize: 8),),
-                      linearStrokeCap: LinearStrokeCap.roundAll,
-                      progressColor: Colors.lightBlueAccent,
-                      backgroundColor: Colors.grey[300],
-                      animation: true,
-                      animationDuration: 1500,
-                    ),
+                      padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[Container(
+                          width: 80.0,
+                          height: 13.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24.0),
+                            color: Colors.white,
+                          ),
+                          child: const SizedBox(
+                            child: Text(
+                              'Survivability',
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: Colors.black,
+                                height: 1,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                          LinearPercentIndicator(
+                            width: 270,
+                            lineHeight: 13,
+                            percent: 0.80,
+                            center: const Text('80.0%', style: TextStyle(fontSize: 8),),
+                            linearStrokeCap: LinearStrokeCap.roundAll,
+                            progressColor: calculateBackgroundColor(value: 0.8),
+                            backgroundColor: Colors.grey[300],
+                            animation: true,
+                            animationDuration: 1500,
+                          ),
+                        ],
+                      )
                   ),
                   SizedBox(
                     width: double.infinity,
                     child: IconButton(
-                      onPressed: () {Navigator.of(context).push(_todoListRoute());},
-                      iconSize: 52,
-                      color: Colors.black,
-                      icon: const Icon(Icons.expand_less_sharp),
+                    onPressed: () {Navigator.of(context).push(_todoListRoute());},
+                    iconSize: 52,
+                    color: Colors.black,
+                    icon: const Icon(Icons.expand_less_sharp),
                     ),
                   )
                 ],
@@ -387,4 +452,14 @@ Route _todoListRoute() {
       );
     },
   );
+}
+
+Color calculateBackgroundColor({required double value}) {
+  if (value >= 0.80) {
+    return Colors.teal;
+  } else if (value >= 0.40) {
+    return Colors.orange;
+  } else {
+    return Colors.redAccent;
+  }
 }
