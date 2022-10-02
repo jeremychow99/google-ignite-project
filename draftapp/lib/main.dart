@@ -1,7 +1,5 @@
-import 'package:draftapp/screens/question.dart';
 import 'package:flutter/material.dart';
-import 'screens/game_environment.dart';
-import 'screens/question.dart';
+import 'screens/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +21,7 @@ class HomePageState extends State<MyApp> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: SafeArea(
-          child: Questionnaire(),
+          child: SplashScreen(),
         ));
   }
 }
