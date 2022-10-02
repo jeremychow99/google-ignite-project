@@ -18,7 +18,7 @@ class IntroScreen extends StatelessWidget {
                   children: <Widget>[
                     Image.asset('assets/scene1.jpg'),
                     Container(
-                      padding: EdgeInsets.fromLTRB(50,100,50,0),
+                      padding: const EdgeInsets.fromLTRB(50,100,50,0),
 
                       child: const Text("Welcome! This will be your polar bear's home :)",
                         style: TextStyle(
@@ -39,7 +39,7 @@ class IntroScreen extends StatelessWidget {
                   children: <Widget>[
                     Image.asset('assets/scene2.jpg'),
                     Container(
-                      padding: EdgeInsets.fromLTRB(50,100,50,0),
+                      padding: const EdgeInsets.fromLTRB(50,100,50,0),
                       child: const Text("Don't let your polar bear suffer in this poor condition :(",
                         style: TextStyle(
                           fontSize: 18,
@@ -58,7 +58,7 @@ class IntroScreen extends StatelessWidget {
                   children: <Widget>[
                     Image.asset('assets/scene1.jpg'),
                     Container(
-                      padding: EdgeInsets.fromLTRB(50,100,50,0),
+                      padding: const EdgeInsets.fromLTRB(50,100,50,0),
                       child: const Text("Your polar bear will be healthy if you take care of him!",
                         style: TextStyle(
                           fontSize: 18,
@@ -82,11 +82,11 @@ class IntroScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     child:
                     TextButton(
                         child: const Text('Next'),
-                        onPressed: () => controller.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeInOut)
+                        onPressed: () => controller.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut)
                     ),
                   ),
 
@@ -102,7 +102,7 @@ class IntroScreen extends StatelessWidget {
                     ),
                   ),
                   Padding (
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     child: TextButton(
                       child: const Text('Skip'),
                       onPressed: () {
@@ -113,11 +113,9 @@ class IntroScreen extends StatelessWidget {
                       },
                     ),
                   )
-
                 ]
             )
         ),
-
       );
 
 }

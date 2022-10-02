@@ -2,8 +2,13 @@ import 'package:conditional_questions/conditional_questions.dart';
 import 'package:flutter/material.dart';
 import 'game_environment.dart';
 
+const Map<String, Color> myColors = {
+  "primary": Color.fromRGBO(0, 158, 199, 1)
+};
 
 class Questionnaire extends StatelessWidget {
+  const Questionnaire({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,13 +17,13 @@ class Questionnaire extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'ACT App'),
+      home: const MyHomePage(title: 'Questionnaire'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
@@ -40,18 +45,18 @@ class _MyHomePageState extends State<MyHomePage> {
         children: questions(),
         trailing: [
           MaterialButton(
-            color: Colors.deepOrange,
-            splashColor: Colors.orangeAccent,
+            color: Colors.blue,
+            splashColor: Colors.white,
             onPressed: () async {
               if (_key.currentState!.validate()) {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const GameEnvironment()));
               }
             },
-            child: Text("Submit"),
+            child: const Text("Submit Questionnaire", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
           )
         ],
-        leading: [Text("TITLE")],
+        leading: const [Text("Complete ALL 10 questions")],
       ),
     );
   }

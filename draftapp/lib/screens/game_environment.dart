@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'dailytasks.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const Map<String, Color> myColors = {
   "primary": Color.fromRGBO(0, 158, 199, 1)
@@ -287,8 +288,32 @@ class _BodyState extends State<_Body> {
                                 context: context,
                                 builder: (context) =>
                                     AlertDialog(
-                                      title: const Text("#TODO"),
-                                      content: const Text("#TODO content"),
+                                      title: const Text("Congratulations!"),
+                                      content: SizedBox(
+                                        width: 300,
+                                        height: 145,
+                                        child: Column(
+                                          children: [
+                                            const Text("5/5 tasks completed You gained:"),
+                                            const Text("Health +4"),
+                                            const Text("Condition +4"),
+                                            const Text("Water Purity +5"),
+                                            const SizedBox(height: 10,),
+                                            const Text("Share with you friends!", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+                                            const SizedBox(height: 15,),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: const [
+                                              Icon(Icons.share),
+                                              Icon(FontAwesomeIcons.facebook),
+                                              Icon(FontAwesomeIcons.instagram),
+                                              Icon(FontAwesomeIcons.twitter),
+                                              Icon(FontAwesomeIcons.telegram),
+                                              Icon(FontAwesomeIcons.whatsapp)
+                                            ],)
+                                          ],
+                                        ),
+                                      ),
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(10))

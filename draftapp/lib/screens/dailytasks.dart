@@ -141,10 +141,12 @@ showAlertDialog(BuildContext context) {
   // set up the button
   Widget okButton = TextButton(
     child: Text("OK"),
-    onPressed: () {
-      Navigator.of(context).push(
+    onPressed: () async {
+      Navigator.pop(context);
+      await Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => const GameEnvironment()));
     },
+
   );
 
   // set up the AlertDialog
