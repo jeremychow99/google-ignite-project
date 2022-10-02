@@ -327,7 +327,7 @@ class _BodyState extends State<_Body> {
                               );
                             },
                             icon: const Icon(
-                              Icons.security_update_good_outlined,
+                              FontAwesomeIcons.listCheck,
                               color: Colors.black,
                             ),
                           ),
