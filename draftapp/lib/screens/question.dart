@@ -12,7 +12,7 @@ class Questionnaire extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'ACT App'),
     );
   }
 }
@@ -59,60 +59,43 @@ class _MyHomePageState extends State<MyHomePage> {
 
 List<Question> questions() {
   return [
-    Question(
-      question: "What is your name?",
-      //isMandatory: true,
-      validate: (field) {
-        if (field.isEmpty) return "Field cannot be empty";
-        return null;
-      },
-    ),
     PolarQuestion(
-        question: "Have you made any donations in the past?",
+        question: "Do you support and contribute to recycling, reusing and reducing waste?",
         answers: ["Yes", "No"],
         isMandatory: true),
     PolarQuestion(
-        question: "In the last 3 months have you had a vaccination?",
+        question: "Do you use plastic containers or glass jars to store food?",
         answers: ["Yes", "No"]),
     PolarQuestion(
-        question: "Have you ever taken medication for HIV?",
+        question: "Do you separate your trash according to wet waste, plastics, paper glass, etc?",
         answers: ["Yes", "No"]),
-    NestedQuestion(
-      question: "The series will depend on your answer",
-      answers: ["Yes", "No"],
-      children: {
-        'Yes': [
-          PolarQuestion(
-              question: "Have you ever taken medication for H1n1?",
-              answers: ["Yes", "No"]),
-          PolarQuestion(
-              question: "Have you ever taken medication for Rabies?",
-              answers: ["Yes", "No"]),
-          Question(
-            question: "Comments",
-          ),
-        ],
-        'No': [
-          NestedQuestion(
-              question: "Have you sustained any injuries?",
-              answers: [
-                "Yes",
-                "No"
-              ],
-              children: {
-                'Yes': [
-                  PolarQuestion(
-                      question: "Did it result in a disability?",
-                      answers: ["Yes", "No", "I prefer not to say"]),
-                ],
-                'No': [
-                  PolarQuestion(
-                      question: "Have you ever been infected with chicken pox?",
-                      answers: ["Yes", "No"]),
-                ]
-              }),
-        ],
-      },
-    )
+    PolarQuestion(
+        question: "Do you turn off the lights whenever you leave a room?",
+        answers: ["Yes", "No"],
+        isMandatory: true),
+    PolarQuestion(
+        question: "Do you leave the water running when you brush your teeth?",
+        answers: ["Yes", "No"],
+        isMandatory: true),
+    PolarQuestion(
+        question: "When you dine out, do you use a plastic straw for your drink?",
+        answers: ["Yes", "No"],
+        isMandatory: true),
+    PolarQuestion(
+        question: "Do you take reusable tote bags with you when you shop?",
+        answers: ["Yes", "No"],
+        isMandatory: true),
+    PolarQuestion(
+        question: "Do you know about the UN Sustainable Development Goals and their importance?",
+        answers: ["Yes", "No"],
+        isMandatory: true),
+    PolarQuestion(
+        question: "Do you prefer and support sustainable brands while shopping for food, clothes, etc.?",
+        answers: ["Yes", "No"],
+        isMandatory: true),
+    PolarQuestion(
+        question: "Lastly, are you ready to be a more environmentally friendly citizen by the use of ACT app?",
+        answers: ["Yes", "No"],
+        isMandatory: true),
   ];
 }
