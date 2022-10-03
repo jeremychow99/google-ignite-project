@@ -217,7 +217,7 @@ class _BodyState extends State<_Body> {
                 children: [
                   Stack(
                     children: [
-                      Image(image: AssetImage(backgrounds[backgroundIndex]['image'].toString()),),
+                      Image(image: AssetImage(backgrounds[backgroundIndex]['image'].toString()),fit: BoxFit.contain,),
                       Positioned(
                         left: 180,
                         child: Container(
