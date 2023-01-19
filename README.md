@@ -1,6 +1,6 @@
 <h1 p align='center'>Team CSS (Code Stolen from StackOverflow) Google Ignite! Product Sprint application: ACT</p>
 
-![app](https://user-images.githubusercontent.com/67400060/193985192-b53ca300-5c09-4c64-b051-34ee20654b5e.jpg)
+![project3](https://user-images.githubusercontent.com/67400060/213470462-1a91979c-d44b-4430-bf55-f190b431d653.png)
 
 <h4 p align='center'>Members: Vrinda, Christabel, Jessica, Jeremy, Sean</p>
 Fully functioning mobile application created by Team CSS based off United Nations Sustainable Development Goals 12 and 13
